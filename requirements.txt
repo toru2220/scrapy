@@ -14,3 +14,5 @@ slack_log_handler
 selenium
 pathvalidate
 m3u8-dl
+mutagen
+
