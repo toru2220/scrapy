@@ -12,8 +12,10 @@ RUN     apt-get update && \
 RUN 	pip3 install -r /root/requirements.txt
 
 # deploy
+FROM jrottenberg/ffmpeg:4.0-scratch AS ffmpeg
 FROM python:3.8-slim
 
+COPY --from=ffmpeg / /
 COPY --from=build-stage /root/.cache/pip /root/.cache/pip
 COPY --from=build-stage /root/requirements.txt /root
 
