@@ -17,3 +17,5 @@ m3u8-dl
 mutagen
 python-dateutil
 chromedriver-binary == 86.0.4240.22 
+bar_chart_race
+
