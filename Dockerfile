@@ -4,15 +4,15 @@ FROM python:3.8-slim as build-stage
 COPY requirements.txt /root/
 
 RUN     apt-get update && \
-        apt-get install -y --no-install-recommends wget curl unzip imagemagick ffmpeg && \
-        apt-get install -y --no-install-recommends python3-dev python3-pip python-twisted && \
-        apt-get install -y --no-install-recommends build-essential && \
-        apt-get install -y --no-install-recommends libxml2-dev python-lxml python-requests
+        apt-get install -y --no-install-recommends wget curl unzip imagemagick \ 
+        ffmpeg build-essential python3-dev python3-pip python3-twisted \ 
+        libxml2-dev python3-lxml python3-requests
 
 RUN 	pip3 install -r /root/requirements.txt
 
 # deploy
 FROM jrottenberg/ffmpeg:4.2-scratch AS ffmpeg
+
 FROM python:3.8-slim
 
 COPY --from=ffmpeg / /
