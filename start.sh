@@ -31,5 +31,5 @@ do
 
  done
  
- sleep 1
+ sleep 600
 done
