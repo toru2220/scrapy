@@ -30,7 +30,7 @@ for e in ${json[@]}; do
     let i++
 done
 
-jobhash=`echo -n "${!var_name_scrapy_giturl}${!var_name_scrapy_spider}${envs}" | md5sum | cut -d ' ' -f 1`
+jobhash=`echo -n "${giturl}${spidername}${envs}" | md5sum | cut -d ' ' -f 1`
 
 if [ -f "${conf}/${jobhash}" ]; then
  echo "same spider is processing... skip this job. [${giturl} ${spidername} ${envs}]"
