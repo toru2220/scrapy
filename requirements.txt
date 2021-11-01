@@ -19,7 +19,7 @@ pytest
 pytest-xdist
 python-dateutil
 requests
-scrapy == 2.2.1
+scrapy == 2.5.1
 scrapy-splash
 selenium
 slack_log_handler
