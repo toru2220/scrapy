@@ -23,8 +23,8 @@ COPY --from=build-stage /usr/lib/x86_64-linux-gnu/*.so.* /usr/lib/x86_64-linux-g
 COPY --from=build-stage /lib/x86_64-linux-gnu/*.so.* /lib/x86_64-linux-gnu/
 
 RUN apt-get update && \
-	apt-get install -y tini wget curl fonts-ipafont git && \
-	pip3 install --upgrade pip && \
+	apt-get install -y tini wget curl fonts-ipafont git python3-dev python3-pip python3-setuptools task-spooler libxml2-dev libxslt1-dev gcc g++ build-essential cmake jq poppler-utils && \
+	pip3 install --upgrade pip setuptools wheel && \
 	pip3 install -r /root/requirements.txt && \
 	rm -rf /root/.cache/pip && \
 	apt-get clean && \
@@ -34,3 +34,8 @@ ENV	COMMAND ""
 ENV	KEYWORD ""
 ENV	TESTMODE ""
 
+WORKDIR /workspace
+COPY start.sh /workspace
+COPY scrapy.sh /workspace
+
+ENTRYPOINT ["/workspace/start.sh"]
