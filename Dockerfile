@@ -38,4 +38,4 @@ WORKDIR /workspace
 COPY start.sh /workspace
 COPY scrapy.sh /workspace
 
-ENTRYPOINT ["/workspace/start.sh"]
+ENTRYPOINT ["start.sh"]
