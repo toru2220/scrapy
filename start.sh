@@ -21,15 +21,15 @@ do
   eval "scrapy_spider_${i}=\"\${SCRAPY_SPIDER_$i:-\$SCRAPY_SPIDER_DEFAULT}\""
   eval "scrapy_envs_${i}=\"\${SCRAPY_ENVS_$i:-\$SCRAPY_ENVS_DEFAULT}\""
 
-  if [ `tsp -l | grep -E queued\|running | wc -l` -lt 5 ] ; then
+  if [ `tsp -l | grep -E queued\|running | wc -l` -lt 10 ] ; then
    JOBID=`tsp ./scrapy.sh "${CONF}" "${!var_name_scrapy_giturl}" "${!var_name_scrapy_spider}" "${!var_name_scrapy_envs}"`
    echo "----- task-spooler job:${JOBID} details -----"
    tsp -i $JOBID
   else
-   echo "task spooler queue is over 5"
+   echo "task spooler queue is over 10"
   fi
 
  done
  
- sleep 600
+ sleep 300
 done
