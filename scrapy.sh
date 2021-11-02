@@ -32,11 +32,11 @@ done
 
 jobhash=`echo -n "${giturl}${spidername}${envs}" | md5sum | cut -d ' ' -f 1`
 
-if [ -f "${conf}/${jobhash}" ]; then
+if [ -f ${conf}/${jobhash} ]; then
  echo "same spider is processing... skip this job. [${giturl} ${spidername} ${envs}]"
  exit 0
 else
- touch "${conf}/${jobhash}"
+ touch ${conf}/${jobhash}
 fi
 
 cd ${workdir}
@@ -51,4 +51,4 @@ scrapy crawl ${spidername}
 echo cleanup
 rm -rf ${workdir}/${projectdir}
 
-rm -rf "${conf}/${jobhash}"
+rm -rf ${conf}/${jobhash}

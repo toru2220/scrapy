@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+
 max_concurrent=${MAX_CONCURRENT:-3}
 max_loop=${MAX_LOOP:-3}
 tsp -S $max_concurrent
@@ -9,6 +11,9 @@ CONF="/conf"
 SCRAPY_GITURL_DEFAULT=${SCRAPY_GITURL_DEFAULT:-"https://www.example.com/sample.git"}
 SCRAPY_SPIDER_DEFAULT=${SCRAPY_SPIDER_DEFAULT:-"sample"}
 SCRAPY_ENVS_DEFAULT=${SCRAPY_ENVS_DEFAULT:-"{}"}
+
+
+find ${conf} -empty -type f -exec rm -rf {} \;
 
 while true
 do
