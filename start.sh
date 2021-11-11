@@ -13,7 +13,7 @@ SCRAPY_SPIDER_DEFAULT=${SCRAPY_SPIDER_DEFAULT:-"sample"}
 SCRAPY_ENVS_DEFAULT=${SCRAPY_ENVS_DEFAULT:-"{}"}
 
 
-find ${conf} -empty -type f -exec rm -rf {} \;
+find ${conf} -empty -type f -name "jobpid*" -exec rm {} \;
 
 while true
 do
